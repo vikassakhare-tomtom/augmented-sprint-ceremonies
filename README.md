@@ -1,10 +1,17 @@
 # Augmented Sprint Ceremonies
 
-AI-augmented toolkit for Scrum ceremonies. Uses Claude Code skills to generate sprint planning digests, standup summaries, review readouts, retro insights, and DoR checks — all human-approved before posting.
+AI-augmented toolkit for Scrum ceremonies. Supports both Claude and GitHub Copilot workflows to generate sprint planning digests, standup summaries, review readouts, retro insights, and DoR checks — all human-approved before posting.
+
+## Supported Runtimes
+
+- Claude Code (slash commands in `.claude/commands/`)
+- GitHub Copilot Chat (workspace prompts in `.github/prompts/`)
 
 ## Prerequisites
 
-- [Claude Code](https://claude.ai/code) installed
+- VS Code installed
+- [GitHub Copilot + Copilot Chat extensions](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) for Copilot workflow
+- [Claude Code](https://claude.ai/code) installed (optional, for Claude workflow)
 - Jira API token ([generate here](https://id.atlassian.com/manage-profile/security/api-tokens))
 - Slack bot token (ask your Slack admin or follow the setup guide below)
 
@@ -52,7 +59,20 @@ Edit `config/team.json`:
 }
 ```
 
-### 4. Open in Claude Code
+### 4. Open in your AI client
+
+Use one of the following:
+
+```bash
+code .
+```
+
+Then run with:
+
+- Copilot Chat (workspace prompts in `.github/prompts/`)
+- Claude Code (`claude .`)
+
+Or directly in Claude Code:
 
 ```bash
 claude .
@@ -106,7 +126,11 @@ Run one refinement pilot with epic `CET-2781` and verify:
 
 ## Usage
 
-Once open in Claude Code, run any ceremony skill:
+Choose either runtime:
+
+### Claude commands
+
+Run any ceremony skill:
 
 | Ceremony | Command |
 |----------|---------|
@@ -116,7 +140,18 @@ Once open in Claude Code, run any ceremony skill:
 | Retrospective | `/retrospective` |
 | DoR Check | `/dor-check` |
 
-Each skill fetches live data from Jira, generates a draft, and asks for your approval before posting anything to Slack.
+### Copilot prompts
+
+Run the matching workspace prompt from `.github/prompts/`:
+
+- `sprint-planning.prompt.md`
+- `daily-standup.prompt.md`
+- `sprint-review.prompt.md`
+- `retrospective.prompt.md`
+- `dor-check.prompt.md`
+- `sprint-refinement.prompt.md`
+
+Both runtimes fetch live data from Jira, generate drafts, and require approval before any external write.
 
 ## Run with GitHub Copilot
 
