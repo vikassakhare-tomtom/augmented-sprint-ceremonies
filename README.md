@@ -58,6 +58,52 @@ Edit `config/team.json`:
 claude .
 ```
 
+## Onboarding for New Teammates
+
+Use this checklist when sharing the repo with colleagues.
+
+### 1. Clone and open
+
+```bash
+git clone <repo-url>
+cd augmented-sprint-ceremonies
+code .
+```
+
+### 2. Create local credentials
+
+```bash
+cp .env.example .env
+```
+
+Fill `.env` with personal credentials (never share tokens).
+
+### 3. Configure team values
+
+Update these files for your team:
+
+- `config/team.json` (Jira host/project/board, Slack channels, Confluence space/folder)
+- `config/velocity.json` (set non-zero `averageVelocity`)
+- `config/dor-rules.json` (optional: customize DoR rules)
+
+### 4. Choose execution path
+
+- **Copilot path**: use prompt files in `.github/prompts/`
+- **Claude path**: use slash commands in `.claude/commands/`
+
+### 5. MCP setup (recommended)
+
+Each teammate must enable Jira/Slack MCP in their own local AI runtime settings.
+Repo permissions only define what is allowed after MCP is connected.
+
+### 6. First-run smoke test
+
+Run one refinement pilot with epic `CET-2781` and verify:
+
+- Draft output is generated
+- Approval prompts appear before Slack/Jira/Confluence writes
+- Output follows template structure
+
 ## Usage
 
 Once open in Claude Code, run any ceremony skill:
@@ -71,6 +117,43 @@ Once open in Claude Code, run any ceremony skill:
 | DoR Check | `/dor-check` |
 
 Each skill fetches live data from Jira, generates a draft, and asks for your approval before posting anything to Slack.
+
+## Run with GitHub Copilot
+
+This repo also includes Copilot-ready prompt files for each ceremony in `.github/prompts/`.
+
+Quick Start (recommended):
+
+1. Open Copilot Chat.
+2. Type `/` and look for workspace prompts (for example, `sprint-refinement`).
+3. Select the prompt, provide scope (for example, `CET-2781`), and run.
+
+If prompts do not appear in `/`:
+
+1. Open Command Palette.
+2. Run `Chat: Run Prompt`.
+3. Choose a file from `.github/prompts/`.
+4. Provide scope and run.
+
+Manual fallback (works in every setup):
+
+1. Open a prompt file from `.github/prompts/`.
+2. Copy the prompt text into Copilot Chat (Agent mode).
+3. Review the generated draft.
+4. Approve explicitly before any Slack or Jira write action.
+
+Policy: Slack, Jira, and Confluence writes always require explicit user approval.
+
+Available prompt files:
+
+- `.github/prompts/sprint-planning.prompt.md`
+- `.github/prompts/daily-standup.prompt.md`
+- `.github/prompts/sprint-review.prompt.md`
+- `.github/prompts/retrospective.prompt.md`
+- `.github/prompts/dor-check.prompt.md`
+- `.github/prompts/sprint-refinement.prompt.md`
+
+Global Copilot behavior is defined in `.github/copilot-instructions.md`.
 
 ## Customization
 
