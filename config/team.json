@@ -6,14 +6,21 @@
     "backlogFilter": "project = YOUR_PROJECT_KEY AND status = 'Backlog' ORDER BY priority DESC"
   },
   "slack": {
+    "refinementChannel": "#sprint-refinement",
     "standupChannel": "#team-standup",
     "sprintChannel": "#team-sprint",
     "stakeholderChannel": "#product-updates"
+  },
+  "confluence": {
+    "spaceKey": "YOUR_SPACE_KEY",
+    "refinementFolderId": 0,
+    "notes": "Set refinementFolderId to the numeric ID of your Sprint Refinement folder in Confluence"
   },
   "team": {
     "name": "Your Team Name",
     "sprintLengthWeeks": 2,
     "ceremonyDays": {
+      "refinement": "Wednesday",
       "planning": "Monday",
       "standup": "Daily",
       "review": "Friday",

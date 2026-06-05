@@ -1,48 +1,70 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "rules": [
     {
       "id": "dor-001",
-      "name": "User story format",
-      "description": "Story must be written in 'As a [user], I want [goal], so that [benefit]' format",
-      "field": "description",
-      "required": true
+      "name": "Acceptance criteria defined and testable",
+      "description": "Story must have at least one acceptance criterion. 'AC: TBD' or task-style bullet points do not count — criteria must describe outcomes.",
+      "field": "acceptanceCriteria",
+      "required": true,
+      "failMessage": "Acceptance criteria are missing or not testable (e.g. task bullets instead of outcomes)"
     },
     {
       "id": "dor-002",
-      "name": "Acceptance criteria defined",
-      "description": "Story must have at least one acceptance criterion",
-      "field": "acceptanceCriteria",
-      "required": true
+      "name": "Story points estimated",
+      "description": "Story must have story points assigned — field cannot be empty or 0.",
+      "field": "storyPoints",
+      "required": true,
+      "failMessage": "Story points not estimated"
     },
     {
       "id": "dor-003",
-      "name": "Story points estimated",
-      "description": "Story must have story points assigned (not 0 or null)",
-      "field": "storyPoints",
-      "required": true
+      "name": "Assignee or component owner set",
+      "description": "Story must have at least one assignee or a component with a designated owner.",
+      "field": "assignee",
+      "required": true,
+      "failMessage": "No assignee or component owner set"
     },
     {
       "id": "dor-004",
       "name": "Priority set",
-      "description": "Story must have a priority (High, Medium, Low)",
+      "description": "Story must have a priority (High, Medium, Low) — not 'Unprioritized' or empty.",
       "field": "priority",
-      "required": true
+      "required": true,
+      "failMessage": "Priority not set"
     },
     {
       "id": "dor-005",
-      "name": "No unresolved dependencies",
-      "description": "All blocking dependencies must be resolved or scheduled",
-      "field": "blockedBy",
-      "required": true
+      "name": "Dependencies linked",
+      "description": "If the story depends on other work, those dependencies must be linked in Jira. No unresolved blocking issues.",
+      "field": "issuelinks",
+      "required": true,
+      "failMessage": "Known dependencies are not linked in Jira"
     },
     {
       "id": "dor-006",
-      "name": "Design attached (if applicable)",
-      "description": "If UI changes are involved, a design link or attachment must be present",
+      "name": "User story format",
+      "description": "Description should follow 'As a [user], I want [goal], so that [benefit]' or clearly describe the user/business value.",
+      "field": "description",
+      "required": true,
+      "failMessage": "Description does not articulate user or business value"
+    },
+    {
+      "id": "dor-007",
+      "name": "No unresolved open questions",
+      "description": "There must be no open clarifying questions in the comments that would block development from starting.",
+      "field": "comment",
+      "required": true,
+      "failMessage": "Unresolved questions in comments"
+    },
+    {
+      "id": "dor-008",
+      "name": "Mockups or design attached (if UI story)",
+      "description": "If the story involves UI changes, a design link or attachment must be present.",
       "field": "attachments",
       "required": false,
-      "condition": "hasUIChanges"
+      "condition": "hasUIChanges",
+      "failMessage": "UI story is missing design attachment or link"
     }
   ]
 }
