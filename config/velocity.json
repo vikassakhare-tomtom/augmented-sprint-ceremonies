@@ -1,0 +1,7 @@
+{
+  "storyPointScale": [1, 2, 3, 5, 8, 13, 21],
+  "averageVelocity": 0,
+  "sprintHistory": [],
+  "capacityBuffer": 0.8,
+  "notes": "Set averageVelocity to your team's average story points per sprint. sprintHistory is auto-populated by the sprint-planning skill over time."
+}

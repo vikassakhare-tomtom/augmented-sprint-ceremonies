@@ -1,0 +1,48 @@
+{
+  "version": "1.0",
+  "rules": [
+    {
+      "id": "dor-001",
+      "name": "User story format",
+      "description": "Story must be written in 'As a [user], I want [goal], so that [benefit]' format",
+      "field": "description",
+      "required": true
+    },
+    {
+      "id": "dor-002",
+      "name": "Acceptance criteria defined",
+      "description": "Story must have at least one acceptance criterion",
+      "field": "acceptanceCriteria",
+      "required": true
+    },
+    {
+      "id": "dor-003",
+      "name": "Story points estimated",
+      "description": "Story must have story points assigned (not 0 or null)",
+      "field": "storyPoints",
+      "required": true
+    },
+    {
+      "id": "dor-004",
+      "name": "Priority set",
+      "description": "Story must have a priority (High, Medium, Low)",
+      "field": "priority",
+      "required": true
+    },
+    {
+      "id": "dor-005",
+      "name": "No unresolved dependencies",
+      "description": "All blocking dependencies must be resolved or scheduled",
+      "field": "blockedBy",
+      "required": true
+    },
+    {
+      "id": "dor-006",
+      "name": "Design attached (if applicable)",
+      "description": "If UI changes are involved, a design link or attachment must be present",
+      "field": "attachments",
+      "required": false,
+      "condition": "hasUIChanges"
+    }
+  ]
+}

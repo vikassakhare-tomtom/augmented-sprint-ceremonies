@@ -1,0 +1,23 @@
+{
+  "jira": {
+    "host": "your-org.atlassian.net",
+    "projectKey": "YOUR_PROJECT_KEY",
+    "boardId": 0,
+    "backlogFilter": "project = YOUR_PROJECT_KEY AND status = 'Backlog' ORDER BY priority DESC"
+  },
+  "slack": {
+    "standupChannel": "#team-standup",
+    "sprintChannel": "#team-sprint",
+    "stakeholderChannel": "#product-updates"
+  },
+  "team": {
+    "name": "Your Team Name",
+    "sprintLengthWeeks": 2,
+    "ceremonyDays": {
+      "planning": "Monday",
+      "standup": "Daily",
+      "review": "Friday",
+      "retro": "Friday"
+    }
+  }
+}
