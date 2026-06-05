@@ -44,7 +44,8 @@ If `config/team.json` is missing or has placeholder values (e.g. `YOUR_PROJECT_K
 
 - **Never modify Jira issues or create links without explicit approval.**
   Always show Jira changes as a checklist and wait for confirmation before applying.
-- Slack is updated automatically after Actions 1 & 2 — no approval needed for that.
+- **Never post to Slack without explicit approval.**
+- Show a clear confirmation prompt before Slack write actions.
 - Use efficient JQL and limit fields to what's needed.
 - Use **tables** when comparing multiple items; **prose** for summaries.
 - Be concise. Surface only what matters for the refinement decision.
@@ -114,9 +115,12 @@ Run this for **every story** — not just failing ones.
 
 ---
 
-## Action 3: Send Summary to Slack (automatic — no approval needed)
+## Action 3: Send Summary to Slack (approval required)
 
-After completing Actions 1 & 2, send the summary to the `slack.refinementChannel` from `config/team.json`.
+After completing Actions 1 & 2, show the Slack summary draft and ask:
+"Would you like to post this summary to Slack channel `{slack.refinementChannel}`?"
+
+Only post after explicit user approval.
 
 ### Slack message format
 
@@ -143,7 +147,7 @@ After completing Actions 1 & 2, send the summary to the `slack.refinementChannel
 • {KEY}: Add dependency links
 ```
 
-After sending, confirm in chat:
+After sending (if approved), confirm in chat:
 > ✅ Slack message sent to `{channel}`.
 
 Then show the full Jira changes checklist and wait for confirmation before applying anything:

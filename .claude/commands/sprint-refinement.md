@@ -45,7 +45,8 @@ If `config/team.json` is missing or has placeholder values (e.g. `YOUR_PROJECT_K
 
 - **Never modify Jira issues or create links without explicit approval.**
   Always show Jira changes as a checklist and wait for confirmation before applying.
-- Slack and Confluence are updated automatically after Actions 1 & 2 — no approval needed for those.
+- **Never post to Slack or create/update Confluence content without explicit approval.**
+- Show a clear confirmation prompt before each external write action (Slack, Confluence, Jira).
 - Use efficient JQL and limit fields to what's needed.
 - Use **tables** when comparing multiple items; **prose** for summaries.
 - Be concise. Surface only what matters for the refinement decision.
@@ -115,9 +116,12 @@ Run this for **every story** — not just failing ones.
 
 ---
 
-## Action 3: Send Summary to Slack (automatic — no approval needed)
+## Action 3: Send Summary to Slack (approval required)
 
-After completing Actions 1 & 2, send the summary to the `slack.refinementChannel` from `config/team.json`.
+After completing Actions 1 & 2, show the Slack summary draft and ask:
+"Would you like to post this summary to Slack channel `{slack.refinementChannel}`?"
+
+Only post after explicit user approval.
 
 ### Slack message format
 
@@ -144,13 +148,18 @@ After completing Actions 1 & 2, send the summary to the `slack.refinementChannel
 • {KEY}: Add dependency links
 ```
 
-After sending, **immediately continue to Action 4** — do not pause or ask.
+After sending (if approved), continue to Action 4.
 
 ---
 
-## Action 4: Create Confluence Page (automatic — no approval needed)
+## Action 4: Create Confluence Page (approval required)
 
-After completing Action 3, create a Confluence page using the values from `config/team.json`:
+After completing Action 3, show the Confluence page draft details and ask:
+"Would you like to create this Confluence page now?"
+
+Only create the page after explicit user approval.
+
+If approved, create a Confluence page using the values from `config/team.json`:
 - **Space:** `confluence.spaceKey`
 - **Parent folder ID:** `confluence.refinementFolderId`
 - **Page title:** `Sprint Refinement Report — {EPIC-KEY}: {Epic Title}`
@@ -158,8 +167,8 @@ After completing Action 3, create a Confluence page using the values from `confi
 
 Use `templates/sprint-refinement-report.md` as the page structure, filling in all `{{PLACEHOLDER}}` values.
 
-After creating the page, confirm in chat:
-> ✅ Slack message sent to `{channel}`. ✅ Confluence page created at `{page-url}`.
+After approved writes complete, confirm in chat:
+> ✅ Slack message sent to `{channel}` (if approved). ✅ Confluence page created at `{page-url}` (if approved).
 
 Then show the full Jira changes checklist and wait for confirmation before applying anything:
 
