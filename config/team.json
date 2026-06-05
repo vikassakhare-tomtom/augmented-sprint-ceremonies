@@ -1,23 +1,23 @@
 {
   "jira": {
-    "host": "your-org.atlassian.net",
-    "projectKey": "YOUR_PROJECT_KEY",
+    "host": "tomtom.atlassian.net",
+    "projectKey": "CET",
     "boardId": 0,
-    "backlogFilter": "project = YOUR_PROJECT_KEY AND status = 'Backlog' ORDER BY priority DESC"
+    "backlogFilter": "project = CET AND status = 'Backlog' ORDER BY priority DESC"
   },
   "slack": {
-    "refinementChannel": "#sprint-refinement",
-    "standupChannel": "#team-standup",
-    "sprintChannel": "#team-sprint",
-    "stakeholderChannel": "#product-updates"
+    "refinementChannel": "#test_vikas",
+    "standupChannel": "#test_vikas",
+    "sprintChannel": "#test_vikas",
+    "stakeholderChannel": "#test_vikas"
   },
   "confluence": {
-    "spaceKey": "YOUR_SPACE_KEY",
+    "spaceKey": "CET",
     "refinementFolderId": 0,
     "notes": "Set refinementFolderId to the numeric ID of your Sprint Refinement folder in Confluence"
   },
   "team": {
-    "name": "Your Team Name",
+    "name": "Help Center Team",
     "sprintLengthWeeks": 2,
     "ceremonyDays": {
       "refinement": "Wednesday",

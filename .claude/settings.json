@@ -1,27 +1,8 @@
 {
-  "mcpServers": {
-    "jira": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-atlassian-jira"],
-      "env": {
-        "JIRA_HOST": "${JIRA_HOST}",
-        "JIRA_USER": "${JIRA_USER}",
-        "JIRA_TOKEN": "${JIRA_TOKEN}"
-      }
-    },
-    "slack": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-slack"],
-      "env": {
-        "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}",
-        "SLACK_TEAM_ID": "${SLACK_TEAM_ID}"
-      }
-    }
-  },
   "permissions": {
     "allow": [
-      "mcp__jira__*",
-      "mcp__slack__*"
+      "mcp__claude_ai_Atlassian__*",
+      "mcp__claude_ai_Slack__*"
     ]
   }
 }
